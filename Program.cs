@@ -1,5 +1,6 @@
 using ApiEntidades.Models;
 using ApiEntidades.Repositories;
+using ApiEntidades.Services;
 using ApiEntidades.Services.Ficheros;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +22,10 @@ builder.Services.AddSwaggerGen();
 // alquien que pide IPlatformRepo, le damos PlatformRepo
 builder.Services.AddTransient<IFicheroMuestraService, FicheroMuestraService>();
 builder.Services.AddTransient<IMuestraRepository, MuestrasRepository>();
+//builder.Services.AddTransient<IMuestraService, MuestraService>();
+builder.Services.AddTransient<ICampoRepository, CampoRepository>();
+builder.Services.AddTransient<CampoService>();
+
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("BaseDeDatos"))); ;
 
 

@@ -29,7 +29,8 @@ namespace ApiEntidades.Repositories
 
         public void Delete(int id)
         {
-
+            _context.Campos.Remove(GetById(id));
+            _context.SaveChanges();
         }
 
         public IEnumerable<Campo> GetAll()

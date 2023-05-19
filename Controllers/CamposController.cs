@@ -34,8 +34,17 @@ namespace ApiEntidades.Controllers
         [Route("{id}")]
         public ActionResult Delete(int id)
         {
-            _campoService.Delete(id);
+            try
+            {
+                _campoService.Delete(id);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
             return Ok();
+
         }
 
 
