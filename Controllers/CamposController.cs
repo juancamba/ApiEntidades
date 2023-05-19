@@ -1,6 +1,7 @@
 ﻿using ApiEntidades.Models;
 using ApiEntidades.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApiEntidades.Controllers
 {
@@ -37,6 +38,10 @@ namespace ApiEntidades.Controllers
             try
             {
                 _campoService.Delete(id);
+            }
+            catch (DbUpdateException ex)
+            {
+                return BadRequest("No lo puedo borrar, tiene datos relacionados");
             }
             catch (Exception ex)
             {

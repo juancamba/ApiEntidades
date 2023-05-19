@@ -29,6 +29,10 @@ namespace ApiEntidades.Repositories
 
         public void Delete(int id)
         {
+            //comprobar que no tiene datos relacionados
+
+            //Ef delete
+
             _context.Campos.Remove(GetById(id));
             _context.SaveChanges();
         }
